@@ -1,13 +1,14 @@
 package ua.edu.ucu.apps.tempseries;
 
 public class TemperatureSeriesAnalysis {
+    private double[] temperatureSeries;
 
     public TemperatureSeriesAnalysis() {
-
+        temperatureSeries = new double[0];
     }
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
-
+        this.temperatureSeries = temperatureSeries;
     }
 
     public double average() {
