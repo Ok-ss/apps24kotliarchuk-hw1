@@ -356,4 +356,64 @@ public class TemperatureSeriesAnalysisTest {
             assertArrayEquals(expResult, actualResult, 0.00001);
         }
 
+        //RESET
+        @Test
+        public void testEmptyReset() {
+            double[] temperatureSeries = {};
+            TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+            double[] expResult = {};
+    
+            seriesAnalysis.reset();
+            double[] actualResult = seriesAnalysis.series();
+    
+            assertArrayEquals(expResult, actualResult, 0.00001);
+        }
+
+        @Test
+        public void testReset() {
+            double[] temperatureSeries = {-4.0, -0.5, 16.2, 11.4, 2.0, 10.8};
+            TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+            double[] expResult = {};
+    
+            seriesAnalysis.reset();
+            double[] actualResult = seriesAnalysis.series();
+    
+            assertArrayEquals(expResult, actualResult, 0.00001);
+        }
+
+        //SORT
+        @Test
+        public void testEmptySort() {
+            double[] temperatureSeries = {};
+            TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+            double[] expResult = {};
+    
+            seriesAnalysis.sortTemps();
+            double[] actualResult = seriesAnalysis.series();
+    
+            assertArrayEquals(expResult, actualResult, 0.00001);
+        }
+
+        public void testOneElementSort() {
+            double[] temperatureSeries = {-0.5};
+            TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+            double[] expResult = {-0.5};
+    
+            seriesAnalysis.sortTemps();
+            double[] actualResult = seriesAnalysis.series();
+    
+            assertArrayEquals(expResult, actualResult, 0.00001);
+        }
+
+        public void testSort() {
+            double[] temperatureSeries = {-0.5, 16.2, -4.0, 11.4, 2.0, 10.8};
+            TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+            double[] expResult = {-4.0, -0.5, 2.0, 10.8, 11.4, 16.2};
+    
+            seriesAnalysis.sortTemps();
+            double[] actualResult = seriesAnalysis.series();
+    
+            assertArrayEquals(expResult, actualResult, 0.00001);
+        }
+
 }

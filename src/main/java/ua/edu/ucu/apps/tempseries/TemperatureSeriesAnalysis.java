@@ -15,6 +15,10 @@ public class TemperatureSeriesAnalysis {
         }
     }
 
+    public double[] series() {
+        return this.temperatureSeries;
+    }
+
     public double average() {
         if (temperatureSeries.length == 0) {
             throw new IllegalArgumentException();
@@ -125,7 +129,8 @@ public class TemperatureSeriesAnalysis {
         double[] results = new double[temperatureSeries.length];
         int pointer = 0;
         for (int i = 0; i < temperatureSeries.length; i++) {
-            if (temperatureSeries[i] <= upperBound && temperatureSeries[i] >= lowerBound) {
+            if (temperatureSeries[i] <= upperBound 
+            && temperatureSeries[i] >= lowerBound) {
                 results[pointer] = temperatureSeries[i];
                 pointer++;
             }
@@ -138,11 +143,22 @@ public class TemperatureSeriesAnalysis {
     }
 
     public void reset() {
-
+        this.temperatureSeries = new double[0];
     }
 
     public double[] sortTemps() {
-        return null;
+        double[] res = new double[temperatureSeries.length];
+        for (int i = 0; i < temperatureSeries.length; i++) {
+            double current = temperatureSeries[i];
+            int idx = 0;
+            for (int j = 0; j < temperatureSeries.length; i++) {
+                if (temperatureSeries[j] < current) {
+                    idx++;
+                }
+            }
+            res[idx] = current;
+        }
+        return res;
     }
 
     public TempSummaryStatistics summaryStatistics() {
