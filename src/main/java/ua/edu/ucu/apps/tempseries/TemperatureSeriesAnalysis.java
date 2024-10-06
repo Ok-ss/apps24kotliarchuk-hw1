@@ -8,7 +8,10 @@ public class TemperatureSeriesAnalysis {
     }
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
-        this.temperatureSeries = temperatureSeries;
+        this.temperatureSeries = new double[temperatureSeries.length];
+        for(int i = 0; i < temperatureSeries.length; i++) {
+            this.temperatureSeries[i] = temperatureSeries[i];
+        }
     }
 
     public double average() {
