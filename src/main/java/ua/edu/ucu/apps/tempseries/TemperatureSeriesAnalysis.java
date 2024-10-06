@@ -5,6 +5,7 @@ import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {
     private double[] temperatureSeries;
     private int size;
+    private int IMPOSIBLE_TEMPERATURE = -273;
 
     //default consrtructor
     public TemperatureSeriesAnalysis() {
@@ -14,13 +15,14 @@ public class TemperatureSeriesAnalysis {
 
     //constructor that accepts initial temperatureSeries
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
+        for (int i = 0; i < temperatureSeries.length; i++) {
+            if (temperatureSeries[i] <= IMPOSIBLE_TEMPERATURE) {
+                throw new InputMismatchException();
+            }
+        }
         this.temperatureSeries = new double[temperatureSeries.length];
         size = 0;
         for (int i = 0; i < temperatureSeries.length; i++) {
-            if (temperatureSeries[i] <= -273) {
-                this.temperatureSeries = new double[0];
-                throw new InputMismatchException();
-            }
             this.temperatureSeries[i] = temperatureSeries[i];
             size++;
         }
@@ -196,17 +198,17 @@ public class TemperatureSeriesAnalysis {
         //if original array is empty new size is the size of temps times 2
         
         for (int i = 0; i < temps.length; i++) {
-            if (temps[i] < -273) {
+            if (temps[i] <= IMPOSIBLE_TEMPERATURE) {
                 throw new InputMismatchException();
             }
         }
 
         if (temperatureSeries.length < size + temps.length && size != 0) {
-            double[] new_temps = new double[size*2];
+            double[] newTemps = new double[size*2];
             for (int i = 0; i < size; i++) {
-                new_temps[i] = temperatureSeries[i];
+                newTemps[i] = temperatureSeries[i];
             }
-            temperatureSeries = new_temps;
+            temperatureSeries = newTemps;
         }
         if (size == 0) {
             temperatureSeries = new double[temps.length*2];

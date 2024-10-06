@@ -14,18 +14,18 @@ public final class TempSummaryStatistics {
     }
 
     //for testing
-    public TempSummaryStatistics(double[] args) {
-        avgTemp = args[0];
-        devTemp = args[1];
-        minTemp = args[2];
-        maxTemp = args[3];
+    public TempSummaryStatistics(double av, double dev, double min, double max) {
+        avgTemp = av;
+        devTemp = dev;
+        minTemp = min;
+        maxTemp = max;
     }
 
-    public String ToString() {
-        String res = "Statistics:\n - average temperature: " + avgTemp + 
-        "\n - deviation of temperatures: " + devTemp + 
-        "\n - minimal temperature: " + minTemp +
-        "\n - maximal temperature: " + maxTemp;
+    public String toString() {
+        String res = "Statistics:\n - average temperature: " + avgTemp 
+        + "\n - deviation of temperatures: " + devTemp
+        + "\n - minimal temperature: " + minTemp
+        + "\n - maximal temperature: " + maxTemp;
         return res;
     }
 }

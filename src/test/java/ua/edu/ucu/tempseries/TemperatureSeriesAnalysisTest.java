@@ -447,25 +447,23 @@ public class TemperatureSeriesAnalysisTest {
         public void testOneElementStatistics() {
             double[] temperatureSeries = {4.6};
             TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
-            double[] setOfVals = {4.6, 0, 4.6, 4.6};
-            TempSummaryStatistics expResult = new TempSummaryStatistics(setOfVals);
+            TempSummaryStatistics expResult = new TempSummaryStatistics(4.6, 0, 4.6, 4.6);
 
             TempSummaryStatistics actualResult = seriesAnalysis.summaryStatistics();
 
 
-            assertEquals(expResult.ToString(), actualResult.ToString());
+            assertEquals(expResult.toString(), actualResult.toString());
         }
 
         @Test
         public void testStatistics() {
             double[] temperatureSeries = {-6.0, -2.0, 0, 2.0, 6.0};
             TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
-            double[] setOfVals = {0, 4.0, -6, 6};
-            TempSummaryStatistics expResult = new TempSummaryStatistics(setOfVals);
+            TempSummaryStatistics expResult = new TempSummaryStatistics(0, 4.0, -6, 6);
 
             TempSummaryStatistics actualResult = seriesAnalysis.summaryStatistics();
 
-            assertEquals(expResult.ToString(), actualResult.ToString());
+            assertEquals(expResult.toString(), actualResult.toString());
         }
 
         //TEST ADDING NEW TEMPS
