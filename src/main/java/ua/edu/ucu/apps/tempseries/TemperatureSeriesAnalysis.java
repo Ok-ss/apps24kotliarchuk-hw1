@@ -23,7 +23,16 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double deviation() {
-        return 0;
+        if (temperatureSeries.length == 0){
+            throw new IllegalArgumentException();
+        }
+        double sum = 0;
+        double av = average();
+        for (int i = 0; i<temperatureSeries.length; i++){
+            sum += Math.pow(temperatureSeries[i]-av, 2);
+        }
+
+        return Math.sqrt(sum/temperatureSeries.length);
     }
 
     public double min() {
