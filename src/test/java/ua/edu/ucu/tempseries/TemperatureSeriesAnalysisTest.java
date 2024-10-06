@@ -114,5 +114,34 @@ public class TemperatureSeriesAnalysisTest {
         seriesAnalysis.min();
     }
 
+    //MAX
+    @Test
+    public void testOneElementMax() {
+        double[] temperatureSeries = {6.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 6.0;
 
+        double actualResult = seriesAnalysis.max();
+
+        assertEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Test
+    public void testMax() {
+        double[] temperatureSeries = {-2.0, 0, 2.0, -3.0, 6.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 6.0;
+
+        double actualResult = seriesAnalysis.max();
+
+        assertEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNoElementMax() {
+        double[] temperatureSeries = {};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+
+        seriesAnalysis.max();
+    }
 }

@@ -52,7 +52,16 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double max() {
-        return 0;
+        if (temperatureSeries.length == 0) {
+            throw new IllegalArgumentException();
+        }
+        double max = temperatureSeries[0];
+        for (int i = 0; i < temperatureSeries.length; i++) {
+            if (temperatureSeries[i] > max) {
+                max = temperatureSeries[i];
+            }
+        }
+        return max;
     }
 
     public double findTempClosestToZero() {
