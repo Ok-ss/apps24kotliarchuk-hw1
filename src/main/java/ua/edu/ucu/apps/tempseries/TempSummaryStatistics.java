@@ -14,7 +14,8 @@ public final class TempSummaryStatistics {
     }
 
     //for testing
-    public TempSummaryStatistics(double av, double dev, double min, double max) {
+    public TempSummaryStatistics(double av, double dev, 
+    double min, double max) {
         avgTemp = av;
         devTemp = dev;
         minTemp = min;

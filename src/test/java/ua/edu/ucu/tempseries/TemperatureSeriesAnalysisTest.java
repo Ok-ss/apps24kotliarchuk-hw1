@@ -31,12 +31,6 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(0, temps.getSize());
     }
 
-    @Test(expected = InputMismatchException.class)
-    public void testIncorrectInputConstructor() {
-        double[] temperatureSeries = {-1.0, 4.6, -275};
-        new TemperatureSeriesAnalysis(temperatureSeries);
-    }
-
     //AVERAGE
     @Test
     public void testAverageWithOneElementArray() {

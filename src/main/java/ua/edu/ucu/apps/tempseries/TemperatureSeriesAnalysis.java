@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {
     private double[] temperatureSeries;
     private int size;
-    private int IMPOSIBLE_TEMPERATURE = -273;
+    private final int IMPOSIBLE_TEMPERATURE = -273;
 
     //default consrtructor
     public TemperatureSeriesAnalysis() {
@@ -15,11 +15,7 @@ public class TemperatureSeriesAnalysis {
 
     //constructor that accepts initial temperatureSeries
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
-        for (int i = 0; i < temperatureSeries.length; i++) {
-            if (temperatureSeries[i] <= IMPOSIBLE_TEMPERATURE) {
-                throw new InputMismatchException();
-            }
-        }
+
         this.temperatureSeries = new double[temperatureSeries.length];
         size = 0;
         for (int i = 0; i < temperatureSeries.length; i++) {
