@@ -1,5 +1,8 @@
 package ua.edu.ucu.apps.tempseries;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class TemperatureSeriesAnalysis {
     private double[] temperatureSeries;
 
@@ -69,6 +72,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double findTempClosestToValue(double tempValue) {
+        //returns the bigger of 2 values if result is tied
         if (temperatureSeries.length == 0) {
             throw new IllegalArgumentException();
         }
@@ -85,7 +89,17 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double[] findTempsLessThen(double tempValue) {
-        return null;
+        //returns nothing in case of an empty array
+        double results[] = new double[temperatureSeries.length];
+        int pointer = 0;
+        for (int i = 0; i < temperatureSeries.length; i++) {
+            if (temperatureSeries[i] < tempValue) {
+                results[pointer] = temperatureSeries[i];
+                pointer++;
+            }
+        }
+        double[] res = Arrays.copyOfRange(results, 0, pointer);
+        return res;
     }
 
     public double[] findTempsGreaterThen(double tempValue) {

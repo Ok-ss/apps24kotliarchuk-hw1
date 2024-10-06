@@ -229,4 +229,39 @@ public class TemperatureSeriesAnalysisTest {
             //Returns bigger of 2 values
             assertEquals(expResult, actualResult, 0.00001);
         }
+
+        //LESS THAN VALUE
+        @Test
+        public void testNoElementLessThan() {
+            double[] temperatureSeries = {};
+            TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+            double[] expResult = {};
+    
+            double[] actualResult = seriesAnalysis.findTempsLessThen(6.0);
+    
+            assertArrayEquals(expResult, actualResult, 0.00001);
+        }
+
+        @Test
+        public void testOneElementLessThan() {
+            double[] temperatureSeries = {3.6};
+            TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+            double[] expResult = {3.6};
+    
+            double[] actualResult = seriesAnalysis.findTempsLessThen(6.0);
+    
+            assertArrayEquals(expResult, actualResult, 0.00001);
+        }
+
+        @Test
+        public void testLessThan() {
+            double[] temperatureSeries = {-4.0, -0.5, 16.2, 11.4, 2.0};
+            TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+            double[] expResult = {-4.0, -0.5, 2.0};
+    
+            double[] actualResult = seriesAnalysis.findTempsLessThen(6.0);
+    
+            assertArrayEquals(expResult, actualResult, 0.00001);
+        }
+
 }
