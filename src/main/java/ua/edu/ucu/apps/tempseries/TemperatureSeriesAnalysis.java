@@ -109,7 +109,7 @@ public class TemperatureSeriesAnalysis {
         double[] results = new double[temperatureSeries.length];
         int pointer = 0;
         for (int i = 0; i < temperatureSeries.length; i++) {
-            if (temperatureSeries[i] > tempValue) {
+            if (temperatureSeries[i] >= tempValue) {
                 results[pointer] = temperatureSeries[i];
                 pointer++;
             }
@@ -122,7 +122,19 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double[] findTempsInRange(double lowerBound, double upperBound) {
-        return null;
+        double[] results = new double[temperatureSeries.length];
+        int pointer = 0;
+        for (int i = 0; i < temperatureSeries.length; i++) {
+            if (temperatureSeries[i] <= upperBound && temperatureSeries[i] >= lowerBound) {
+                results[pointer] = temperatureSeries[i];
+                pointer++;
+            }
+        }
+        double[] res = new double[pointer];
+        for (int i = 0; i < pointer; i++) {
+            res[i] = results[i];
+        }
+        return res;
     }
 
     public void reset() {

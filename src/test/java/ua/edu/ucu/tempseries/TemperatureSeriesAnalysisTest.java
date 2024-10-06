@@ -298,4 +298,62 @@ public class TemperatureSeriesAnalysisTest {
             assertArrayEquals(expResult, actualResult, 0.00001);
         }
 
+        @Test
+        public void testEqualsGreaterThan() {
+            double[] temperatureSeries = {-4.0, -0.5, 16.2, 11.4, 2.0, 10.8};
+            TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+            double[] expResult = {16.2, 11.4, 10.8};
+    
+            double[] actualResult = seriesAnalysis.findTempsGreaterThen(10.8);
+    
+            assertArrayEquals(expResult, actualResult, 0.00001);
+        }
+
+
+        
+        //VALUES IN RANGE
+        @Test
+        public void testNoElementRange() {
+            double[] temperatureSeries = {};
+            TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+            double[] expResult = {};
+    
+            double[] actualResult = seriesAnalysis.findTempsInRange(6.0, 100);
+    
+            assertArrayEquals(expResult, actualResult, 0.00001);
+        }
+
+        @Test
+        public void testOneElementRange() {
+            double[] temperatureSeries = {3.6};
+            TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+            double[] expResult = {3.6};
+    
+            double[] actualResult = seriesAnalysis.findTempsInRange(3.0, 6.0);
+    
+            assertArrayEquals(expResult, actualResult, 0.00001);
+        }
+
+        @Test
+        public void testRange() {
+            double[] temperatureSeries = {-4.0, -0.5, 16.2, 11.4, 2.0};
+            TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+            double[] expResult = {11.4, 2.0};
+    
+            double[] actualResult = seriesAnalysis.findTempsInRange(0, 12);
+    
+            assertArrayEquals(expResult, actualResult, 0.00001);
+        }
+
+        @Test
+        public void testEqualsRange() {
+            double[] temperatureSeries = {-4.0, -0.5, 16.2, 11.4, 2.0, 10.8};
+            TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+            double[] expResult = {-0.5, 11.4, 2.0, 10.8};
+    
+            double[] actualResult = seriesAnalysis.findTempsInRange(-0.5, 11.4);
+    
+            assertArrayEquals(expResult, actualResult, 0.00001);
+        }
+
 }
