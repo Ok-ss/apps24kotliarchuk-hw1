@@ -65,23 +65,23 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double findTempClosestToZero() {
+        return findTempClosestToValue(0);
+    }
+
+    public double findTempClosestToValue(double tempValue) {
         if (temperatureSeries.length == 0) {
             throw new IllegalArgumentException();
         }
         double cl_val = temperatureSeries[0];
-        double distance = Math.abs(cl_val);
+        double distance = Math.abs(cl_val-tempValue);
         for (int i = 0; i < temperatureSeries.length; i++) {
-            if (Math.abs(temperatureSeries[i]) < distance || 
-            (Math.abs(temperatureSeries[i]) == distance && temperatureSeries[i] > 0)) {
+            if (Math.abs(temperatureSeries[i]-tempValue) < distance || 
+            (Math.abs(temperatureSeries[i]-tempValue) == distance && temperatureSeries[i] > 0)) {
                 cl_val = temperatureSeries[i];
-                distance = Math.abs(cl_val);
+                distance = Math.abs(cl_val-tempValue);
             }
         }
         return cl_val;
-    }
-
-    public double findTempClosestToValue(double tempValue) {
-        return 0;
     }
 
     public double[] findTempsLessThen(double tempValue) {
