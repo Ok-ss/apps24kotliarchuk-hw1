@@ -3,9 +3,11 @@ package ua.edu.ucu.apps.tempseries;
 import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
+    private static final int IMPOSSIBLE_TEMPERATURE = -273;
+
     private double[] temperatureSeries;
     private int size;
-    public static final int IMPOSIBLE_TEMPERATURE = -273;
+    
 
     //default consrtructor
     public TemperatureSeriesAnalysis() {
@@ -194,7 +196,7 @@ public class TemperatureSeriesAnalysis {
         //if original array is empty new size is the size of temps times 2
         
         for (int i = 0; i < temps.length; i++) {
-            if (temps[i] <= IMPOSIBLE_TEMPERATURE) {
+            if (temps[i] <= IMPOSSIBLE_TEMPERATURE) {
                 throw new InputMismatchException();
             }
         }
