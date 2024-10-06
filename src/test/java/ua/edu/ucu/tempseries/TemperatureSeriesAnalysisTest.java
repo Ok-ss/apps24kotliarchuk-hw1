@@ -69,7 +69,7 @@ public class TemperatureSeriesAnalysisTest {
         double[] temperatureSeries = {};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
 
-        double actualResult = seriesAnalysis.deviation();
+        seriesAnalysis.deviation();
     }
 
     @Test
@@ -82,5 +82,37 @@ public class TemperatureSeriesAnalysisTest {
 
         assertEquals(expResult, actualResult, 0.00001);
     }
+
+    //MIN
+    @Test
+    public void testOneElementMin() {
+        double[] temperatureSeries = {6.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 6.0;
+
+        double actualResult = seriesAnalysis.min();
+
+        assertEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Test
+    public void testMin() {
+        double[] temperatureSeries = {-2.0, 0, 2.0, -3.0, 6.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = -3.0;
+
+        double actualResult = seriesAnalysis.min();
+
+        assertEquals(expResult, actualResult, 0.00001);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testNoElementMin() {
+        double[] temperatureSeries = {};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+
+        seriesAnalysis.min();
+    }
+
 
 }

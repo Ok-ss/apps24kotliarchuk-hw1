@@ -39,7 +39,16 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double min() {
-        return 0;
+        if (temperatureSeries.length == 0) {
+            throw new IllegalArgumentException();
+        }
+        double min = temperatureSeries[0];
+        for (int i = 0; i < temperatureSeries.length; i++) {
+            if (temperatureSeries[i] < min) {
+                min = temperatureSeries[i];
+            }
+        }
+        return min;
     }
 
     public double max() {
