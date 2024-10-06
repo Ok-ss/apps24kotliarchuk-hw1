@@ -65,7 +65,19 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double findTempClosestToZero() {
-        return 0;
+        if (temperatureSeries.length == 0) {
+            throw new IllegalArgumentException();
+        }
+        double cl_val = temperatureSeries[0];
+        double distance = Math.abs(cl_val);
+        for (int i = 0; i < temperatureSeries.length; i++) {
+            if (Math.abs(temperatureSeries[i]) < distance || 
+            (Math.abs(temperatureSeries[i]) == distance && temperatureSeries[i] > 0)) {
+                cl_val = temperatureSeries[i];
+                distance = Math.abs(cl_val);
+            }
+        }
+        return cl_val;
     }
 
     public double findTempClosestToValue(double tempValue) {
