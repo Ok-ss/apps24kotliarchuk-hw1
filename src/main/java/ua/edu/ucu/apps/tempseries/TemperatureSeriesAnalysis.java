@@ -1,7 +1,5 @@
 package ua.edu.ucu.apps.tempseries;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 
 public class TemperatureSeriesAnalysis {
     private double[] temperatureSeries;
@@ -76,21 +74,22 @@ public class TemperatureSeriesAnalysis {
         if (temperatureSeries.length == 0) {
             throw new IllegalArgumentException();
         }
-        double cl_val = temperatureSeries[0];
-        double distance = Math.abs(cl_val-tempValue);
+        double closestVal = temperatureSeries[0];
+        double distance = Math.abs(closestVal-tempValue);
         for (int i = 0; i < temperatureSeries.length; i++) {
-            if (Math.abs(temperatureSeries[i]-tempValue) < distance || 
-            (Math.abs(temperatureSeries[i]-tempValue) == distance && temperatureSeries[i] > 0)) {
-                cl_val = temperatureSeries[i];
-                distance = Math.abs(cl_val-tempValue);
+            if (Math.abs(temperatureSeries[i]-tempValue) < distance 
+            || (Math.abs(temperatureSeries[i]-tempValue) == distance 
+            && temperatureSeries[i] > 0)) {
+                closestVal = temperatureSeries[i];
+                distance = Math.abs(closestVal-tempValue);
             }
         }
-        return cl_val;
+        return closestVal;
     }
 
     public double[] findTempsLessThen(double tempValue) {
         //returns nothing in case of an empty array
-        double results[] = new double[temperatureSeries.length];
+        double[] results = new double[temperatureSeries.length];
         int pointer = 0;
         for (int i = 0; i < temperatureSeries.length; i++) {
             if (temperatureSeries[i] < tempValue) {
@@ -98,7 +97,10 @@ public class TemperatureSeriesAnalysis {
                 pointer++;
             }
         }
-        double[] res = Arrays.copyOfRange(results, 0, pointer);
+        double[] res = new double[pointer];
+        for (int i = 0; i < res.length; i++) {
+            res[i] = results[i];
+        }
         return res;
     }
 
