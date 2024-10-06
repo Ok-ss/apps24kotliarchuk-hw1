@@ -105,7 +105,20 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double[] findTempsGreaterThen(double tempValue) {
-        return null;
+        //returns nothing in case of an empty array
+        double[] results = new double[temperatureSeries.length];
+        int pointer = 0;
+        for (int i = 0; i < temperatureSeries.length; i++) {
+            if (temperatureSeries[i] > tempValue) {
+                results[pointer] = temperatureSeries[i];
+                pointer++;
+            }
+        }
+        double[] res = new double[pointer];
+        for (int i = 0; i < res.length; i++) {
+            res[i] = results[i];
+        }
+        return res;
     }
 
     public double[] findTempsInRange(double lowerBound, double upperBound) {

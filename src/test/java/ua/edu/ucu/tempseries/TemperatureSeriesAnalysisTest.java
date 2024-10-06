@@ -264,4 +264,38 @@ public class TemperatureSeriesAnalysisTest {
             assertArrayEquals(expResult, actualResult, 0.00001);
         }
 
+        //GREATER THAN VALUE
+        @Test
+        public void testNoElementGreaterThan() {
+            double[] temperatureSeries = {};
+            TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+            double[] expResult = {};
+    
+            double[] actualResult = seriesAnalysis.findTempsGreaterThen(6.0);
+    
+            assertArrayEquals(expResult, actualResult, 0.00001);
+        }
+
+        @Test
+        public void testOneElementGreaterThan() {
+            double[] temperatureSeries = {3.6};
+            TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+            double[] expResult = {};
+    
+            double[] actualResult = seriesAnalysis.findTempsGreaterThen(6.0);
+    
+            assertArrayEquals(expResult, actualResult, 0.00001);
+        }
+
+        @Test
+        public void testGreaterThan() {
+            double[] temperatureSeries = {-4.0, -0.5, 16.2, 11.4, 2.0};
+            TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+            double[] expResult = {16.2, 11.4};
+    
+            double[] actualResult = seriesAnalysis.findTempsGreaterThen(6.0);
+    
+            assertArrayEquals(expResult, actualResult, 0.00001);
+        }
+
 }
