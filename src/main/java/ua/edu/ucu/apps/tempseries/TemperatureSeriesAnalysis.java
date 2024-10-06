@@ -12,24 +12,24 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double average() {
-        if (temperatureSeries.length == 0){
+        if (temperatureSeries.length == 0) {
             throw new IllegalArgumentException();
         }
         double sum = 0;
-        for (int i = 0; i<temperatureSeries.length; i++){
-            sum+=temperatureSeries[i];
+        for (int i = 0; i < temperatureSeries.length; i++) {
+            sum += temperatureSeries[i];
         }
         return sum/temperatureSeries.length;
     }
 
-    public double deviation() {
-        if (temperatureSeries.length == 0){
+    public double deviation() { 
+        if (temperatureSeries.length == 0) {
             throw new IllegalArgumentException();
         }
         double sum = 0;
         double av = average();
-        for (int i = 0; i<temperatureSeries.length; i++){
-            sum += Math.pow(temperatureSeries[i]-av, 2);
+        for (int i = 0; i < temperatureSeries.length; i++) {
+            sum += (temperatureSeries[i]-av) * (temperatureSeries[i]-av);
         }
 
         return Math.sqrt(sum/temperatureSeries.length);

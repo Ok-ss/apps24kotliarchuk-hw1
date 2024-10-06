@@ -54,7 +54,7 @@ public class TemperatureSeriesAnalysisTest {
     
    //DEVIATION
    @Test
-    public void testOneElementDeviation(){
+    public void testOneElementDeviation() {
         double[] temperatureSeries = {12.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         double expResult = 0;
@@ -65,7 +65,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testNoElenemtDeviation(){
+    public void testNoElenemtDeviation() {
         double[] temperatureSeries = {};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
 
@@ -73,7 +73,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testDeviation(){
+    public void testDeviation() {
         double[] temperatureSeries = {-6.0, -2.0, 0, 2.0, 6.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         double expResult = 4.0;
