@@ -12,7 +12,14 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double average() {
-        return -1;
+        if (temperatureSeries.length == 0){
+            throw new IllegalArgumentException();
+        }
+        double sum = 0;
+        for (int i = 0; i<temperatureSeries.length; i++){
+            sum+=temperatureSeries[i];
+        }
+        return sum/temperatureSeries.length;
     }
 
     public double deviation() {
